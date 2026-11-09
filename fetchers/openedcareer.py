@@ -15,7 +15,7 @@ def parse_jobs(items):
             Job(
                 source="openedcareer",
                 job_id=str(item["id"]),
-                title=html.unescape(item["title"]["rendered"]),
+                title=html.unescape(item["title"]["rendered"]).strip(),
                 url=item["link"],
                 posted=datetime.fromisoformat(item["date"]),
             )
