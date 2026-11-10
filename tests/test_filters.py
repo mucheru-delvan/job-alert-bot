@@ -34,3 +34,14 @@ def test_filter_jobs_keeps_only_matches():
     jobs = [make_job("Python Developer"), make_job("Waiter"), make_job("DevOps Engineer")]
     result = filter_jobs(jobs)
     assert [j.title for j in result] == ["Python Developer", "DevOps Engineer"]
+
+def test_excluded_word_blocks_match():
+    assert not matches(make_job("Data Collectors at Jhpiego"))
+
+
+def test_exclude_can_be_overridden():
+    assert matches(make_job("Data Collectors"), exclude=[])
+
+
+def test_exclude_is_whole_word_too():
+    assert matches(make_job("Software Engineer, Salesforce"), exclude=["sales"])
