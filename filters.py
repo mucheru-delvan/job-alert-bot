@@ -1,7 +1,5 @@
 import re
 
-from models import Job
-
 KEYWORDS = [
     "backend", "back-end", "python", "django", "software",
     "developer", "engineer", "it support", "devops", "data",
