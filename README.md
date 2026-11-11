@@ -1,6 +1,7 @@
 # Job Alert Bot
 
 [![Job alerts](https://github.com/mucheru-delvan/job-alert-bot/actions/workflows/job-alerts.yml/badge.svg)](https://github.com/mucheru-delvan/job-alert-bot/actions/workflows/job-alerts.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A Python bot that checks Kenyan job listings every morning and emails me only the new tech roles. I built it to stop scrolling job boards by hand during my final year at university.
 
