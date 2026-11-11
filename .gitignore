@@ -1,5 +1,4 @@
 .env
-seen_jobs.json
 __pycache__/
 .pytest_cache/
 .venv/
