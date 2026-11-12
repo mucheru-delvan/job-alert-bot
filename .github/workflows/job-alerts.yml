@@ -4,7 +4,8 @@ on:
   schedule:
     - cron: "0 5 * * *"
   workflow_dispatch:
-
+#workflow_dispatch adds a “Run workflow” button, 
+# so you can trigger it by hand for testing without waiting for the schedule.
 permissions:
   contents: write
 
