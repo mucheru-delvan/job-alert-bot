@@ -45,3 +45,14 @@ def test_exclude_can_be_overridden():
 
 def test_exclude_is_whole_word_too():
     assert matches(make_job("Software Engineer, Salesforce"), exclude=["sales"])
+
+def test_graduate_trainee_matches():
+    assert matches(make_job("Graduate Trainee Programme at KCB"))
+
+
+def test_internship_matches_without_tech_word():
+    assert matches(make_job("Finance Internship at Safaricom"))
+
+
+def test_international_is_not_an_intern():
+    assert not matches(make_job("International Business Lead"))

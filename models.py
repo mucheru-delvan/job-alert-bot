@@ -10,3 +10,5 @@ class Job:
     title: str
     url: str
     posted: datetime
+    company: str = ""
+    location: str = ""

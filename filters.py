@@ -6,10 +6,18 @@ KEYWORDS = [
     "cloud", "api", "ict", "technical support",
 ]
 
+PROGRAMS = [
+    "intern", "interns", "internship", "internships",
+    "attachment", "trainee", "trainees",
+    "graduate", "graduates", "apprenticeship",
+]
+
 EXCLUDE = [
     "collector", "collectors", "supplier", "protection",
     "sales", "civil", "mechanical",
 ]
+
+LOCATIONS = ["kenya", "nairobi", "africa", "remote"]
 
 
 def contains_word(text, words):
@@ -20,10 +28,21 @@ def contains_word(text, words):
     return False
 
 
-def matches(job, keywords=KEYWORDS, exclude=EXCLUDE):
+def location_ok(job, locations=LOCATIONS):
+    if not job.location:
+        return True
+    return contains_word(job.location.lower(), locations)
+
+
+def matches(job, keywords=KEYWORDS, exclude=EXCLUDE, locations=LOCATIONS, programs=PROGRAMS):
     title = job.title.lower()
-    return contains_word(title, keywords) and not contains_word(title, exclude)
+    wanted = contains_word(title, keywords) or contains_word(title, programs)
+    return (
+        wanted
+        and not contains_word(title, exclude)
+        and location_ok(job, locations)
+    )
 
 
-def filter_jobs(jobs, keywords=KEYWORDS, exclude=EXCLUDE):
-    return [job for job in jobs if matches(job, keywords, exclude)]
+def filter_jobs(jobs, keywords=KEYWORDS, exclude=EXCLUDE, locations=LOCATIONS, programs=PROGRAMS):
+    return [job for job in jobs if matches(job, keywords, exclude, locations, programs)]
