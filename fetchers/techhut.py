@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import requests
 
@@ -17,12 +17,12 @@ def parse_date(value):
         return None
     posted = datetime.fromisoformat(value)
     if posted.tzinfo is not None:
-        posted = posted.astimezone(timezone.utc).replace(tzinfo=None)
+        posted = posted.astimezone(UTC).replace(tzinfo=None)
     return posted
 
 
 def parse_jobs(items, keep_regions=KEEP_REGIONS, max_age_days=MAX_AGE_DAYS, now=None):
-    now = now or datetime.now(timezone.utc).replace(tzinfo=None)
+    now = now or datetime.now(UTC).replace(tzinfo=None)
     cutoff = now - timedelta(days=max_age_days)
     jobs = []
     for item in items:
