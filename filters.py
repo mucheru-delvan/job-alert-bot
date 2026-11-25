@@ -15,6 +15,8 @@ PROGRAMS = [
 EXCLUDE = [
     "collector", "collectors", "supplier", "protection",
     "sales", "civil", "mechanical",
+    "faculty", "lecturer", "professor",
+    "senior", "staff", "principal", "head", "director", "chief",
 ]
 
 LOCATIONS = ["kenya", "nairobi", "africa", "emea", "global", "worldwide", "anywhere"]

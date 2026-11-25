@@ -47,3 +47,4 @@ def test_parse_converts_timezone_offsets_to_utc():
 def test_parse_skips_records_missing_required_fields():
     broken = {k: v for k, v in SAMPLE.items() if k != "url"}
     assert parse_jobs([broken], keep_regions={"Rest of Africa"}, now=NOW) == []
+
