@@ -17,7 +17,7 @@ EXCLUDE = [
     "sales", "civil", "mechanical",
 ]
 
-LOCATIONS = ["kenya", "nairobi", "africa", "remote"]
+LOCATIONS = ["kenya", "nairobi", "africa", "emea", "global", "worldwide", "anywhere"]
 
 
 def contains_word(text, words):
