@@ -73,3 +73,12 @@ def test_senior_roles_are_excluded():
 
 def test_faculty_posts_are_excluded():
     assert not matches(make_job("FACULTY – IT, Computer Science"))
+
+def test_south_africa_is_not_africa():
+    job = Job("t", "1", "Software Engineer", "u", datetime(2026, 11, 10), location="Cape Town, South Africa")
+    assert not matches(job)
+
+
+def test_remote_africa_is_allowed():
+    job = Job("t", "1", "Software Engineer", "u", datetime(2026, 11, 10), location="Remote, Africa")
+    assert matches(job)
