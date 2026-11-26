@@ -19,7 +19,7 @@ EXCLUDE = [
     "senior", "staff", "principal", "head", "director", "chief","manager"
 ]
 
-LOCATIONS = ["kenya", "nairobi", "africa", "emea", "global", "worldwide", "anywhere"]
+LOCATIONS = ["kenya", "nairobi", "emea", "global", "worldwide", "anywhere"]
 
 
 def contains_word(text, words):
@@ -33,7 +33,11 @@ def contains_word(text, words):
 def location_ok(job, locations=LOCATIONS):
     if not job.location:
         return True
-    return contains_word(job.location.lower(), locations)
+    location = job.location.lower()
+    if contains_word(location, locations):
+        return True
+    location = location.replace("south africa", "")
+    return contains_word(location, ["africa"])
 
 
 def matches(job, keywords=KEYWORDS, exclude=EXCLUDE, locations=LOCATIONS, programs=PROGRAMS):
