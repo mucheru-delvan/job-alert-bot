@@ -13,14 +13,13 @@ def make_job(title):
         posted=datetime(2026, 11, 10),
     )
 
-
+    
 def test_matches_keyword_case_insensitive():
-    assert matches(make_job("Senior PYTHON Developer"))
+    assert matches(make_job("PYTHON Developer"))
 
 
 def test_no_match_returns_false():
     assert not matches(make_job("Waiter at CJ's"))
-
 
 def test_whole_word_only():
     assert not matches(make_job("International Sales Lead"), keywords=["intern"])

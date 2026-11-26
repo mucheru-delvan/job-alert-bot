@@ -22,7 +22,6 @@ def parse_date(value):
 
 
 def parse_jobs(items, keep_regions=KEEP_REGIONS, max_age_days=MAX_AGE_DAYS, now=None):
-    
     now = now or datetime.now(UTC).replace(tzinfo=None)
     cutoff = now - timedelta(days=max_age_days)
     jobs = []
@@ -30,6 +29,9 @@ def parse_jobs(items, keep_regions=KEEP_REGIONS, max_age_days=MAX_AGE_DAYS, now=
         if item.get("region") not in keep_regions:
             continue
         if not (item.get("id") and item.get("title") and item.get("url")):
+            continue
+        posted = parse_date(item.get("date"))
+        if posted is None or posted < cutoff:
             continue
         jobs.append(
             Job(
