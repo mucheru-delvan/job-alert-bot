@@ -56,3 +56,20 @@ def test_internship_matches_without_tech_word():
 
 def test_international_is_not_an_intern():
     assert not matches(make_job("International Business Lead"))
+
+def test_location_anywhere_is_allowed():
+    job = Job("t", "1", "Software Engineer", "u", datetime(2026, 11, 10), location="Anywhere")
+    assert matches(job)
+
+
+def test_remote_in_one_other_country_is_blocked():
+    job = Job("t", "1", "Software Engineer", "u", datetime(2026, 11, 10), location="Remote in USA")
+    assert not matches(job)
+
+
+def test_senior_roles_are_excluded():
+    assert not matches(make_job("Senior Backend Engineer"))
+
+
+def test_faculty_posts_are_excluded():
+    assert not matches(make_job("FACULTY – IT, Computer Science"))

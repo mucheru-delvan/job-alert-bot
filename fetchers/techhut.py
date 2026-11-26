@@ -27,10 +27,9 @@ def parse_jobs(items, keep_regions=KEEP_REGIONS, max_age_days=MAX_AGE_DAYS, now=
     cutoff = now - timedelta(days=max_age_days)
     jobs = []
     for item in items:
-        if not (item.get("id") and item.get("title") and item.get("url")):
+        if item.get("region") not in keep_regions:
             continue
-        posted = parse_date(item.get("date"))
-        if posted is None or posted < cutoff:
+        if not (item.get("id") and item.get("title") and item.get("url")):
             continue
         jobs.append(
             Job(
